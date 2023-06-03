@@ -1,0 +1,99 @@
+var res = http.postJson("http://www.o7c.com/api.php/home/index/user_login", {
+                "username": yun["user"],                       //携带参数
+                "password": yun["password"],
+
+            })
+
+
+
+            if (res && isJSON(res.body.string())) {
+                result = res.body.json();
+                
+            } else {
+                log("接口异常");
+
+                toast("登录失败，请重试!");
+                sleep(3000);
+                return;
+            }
+            log(result);
+            if (result["code"] == 1) {
+                saveconfig();
+                log("登录成功：" + yun["user"]);
+
+            } else {
+                log(result["msg"]);
+                log("登录失败，请重试!");
+                toast(result["msg"]);
+                sleep(1500);
+                toast("登录失败，请重试!");
+                return;
+            }
+// 绑定主页链接，针对点赞，关注
+http://www.o7c.com/api.php/home/index/user_bind_tiktok_main
+username : 5225129qq
+password : 5225129qq..
+tiktok_num : https://v.douyin.com/dFGS3P
+        })
+
+        if (res && isJSON(res.body.string())) {
+            result = res.body.json();
+        } else {
+            log("接口异常");
+
+            toast("绑定失败，请重试!");
+            exit();
+        }
+        log(result);
+        if (result["code"] == 1) {
+            saveconfig();
+            log("绑定成功" + yun["user"]);
+        } else {
+            log("绑定失败! " + result["msg"]);
+            toast(result["msg"]);
+
+        }
+获取任务
+url="http://www.o7c.com/api.php/home/follow/get_task";
+
+var res = http.postJson(url, {
+            "tiktok_num": dy_name,
+        })
+   
+        //log(res.body.string())
+        if (res && isJSON(res.body.string())) {
+            result = res.body.json();
+            //log(res.body.json());
+            if (result["code"] == 1) {
+                log("获取任务成功。")
+                log(result)
+                log("任务id为 "+result["data"]["id"]);
+          
+                    task_ide = result["data"]["id"]; 
+                    user_id = result["data"]["user_id"]; 
+                    update_time = result["data"]["update_time"];
+                    task_name = result["data"]["task_name"];
+                    task_time = result["data"]["task_time"];
+                    fail_time = result["data"]["fail_time"];
+                    is_ofo = result["data"]["is_ofo"];
+                    comm = result["data"]["comm"];
+                    url_id = result["data"]["pullurl"];
+                    break;
+               
+
+            }else{
+                if (result["code"] == 0) {
+                    log("提示: 暂无任务");
+                }else{
+                    log("参数异常",result["code"],typeof(result["code"]));
+                }
+            }
+        } else {
+            log("访问api失败");
+        }
+// 上报完成，针对点赞，关注
+http://www.o7c.com/api.php/home/index/task_status_main
+task_ide : 111
+tiktok_num : https://v.douyin.com/dFGS3P
+点赞接口，http://www.o7c.com/api.php/home/follow/get_fabulous_task
+tiktok_num

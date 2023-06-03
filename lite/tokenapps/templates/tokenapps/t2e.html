@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <title>环境转换</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+
+
+
+<body>
+
+    <div class="container">
+        <!-- <h2></h2> -->
+        <br>
+        <br>
+
+
+        <div class="card">
+            <div class="card-body">
+                {{ info }}
+
+                <form action="/token/isOk" method="post">
+
+                    <div class="container-fluid mt-3">
+                        <h1>环境转换</h1>
+                        <p>把提取出来的token数据转换为本软件适用的环境。</p>
+                    <input type="text" class="form-control"  value="{{ token }}"  placeholder="token" name="token">
+
+                        <div class="row">
+                          <div class="col p-3  ">要转换的token填在这里
+                            <textarea  name="raw_token" rows = "15" hidht="100%" type="text" class="form-control" id="usr">{{ input }}</textarea>
+                          </div>
+                          <div class="col p-3">环境后的在这里
+                            <textarea rows = "15"  type="text" class="form-control" id="usr">{{ output }}</textarea>
+                          </div>
+                      
+                        </div>
+                      </div>
+                      <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-block">转换</button>
+                      </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
