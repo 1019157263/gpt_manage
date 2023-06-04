@@ -482,7 +482,7 @@ def chat_process(request):
                 print(liaotian_id)
                 response = openai.ChatCompletion.create(
                             model="gpt-3.5-turbo",
-                            messages=mesg_liaotian,
+                            messages=mesg_liaotian[-5:],
                             stream=True,
                             temperature=question["temperature"],
                             presence_penalty=0,
