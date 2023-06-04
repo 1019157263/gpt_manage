@@ -371,6 +371,8 @@ def ret_stem(id,token,ob):
             {"role":"assistant","id":id,"parentMessageId":id,"text":"","detail":{"id":id,"object":"chat.completion.chunk","created":time.time(),"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"role":"assistant"},"index":0,"finish_reason":null}]}}
             
             '''
+            print(x_ret)
+            
             yield x_ret
             yield "\r\n"
             
@@ -402,7 +404,6 @@ ret_data={
                     }
                 }
 import openai
-openai.api_key = "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"
 
 
 '''
@@ -473,6 +474,11 @@ def chat_process(request):
                     liaotian_info.mse = json.dumps(liaotian_mes,ensure_ascii=False, indent=4)#保存聊天
                     liaotian_info.save()
 
+                api_key_obj =  user_cookies.objects.get(uid=5)#获取key对象
+                api_key = api_key_obj.cookies
+                openai.api_key = api_key
+
+                print(api_key)
                 print(liaotian_id)
                 response = openai.ChatCompletion.create(
                             model="gpt-3.5-turbo",
